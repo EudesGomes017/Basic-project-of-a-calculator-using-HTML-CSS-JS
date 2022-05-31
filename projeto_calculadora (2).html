@@ -108,7 +108,6 @@
           document.getElementById('resultado').value += valor 
         }
         if(valor === '='){
-          //existe um recurso no js que é a eval ela faz exatamente oq  nós fizemos aqui  nós submentamos no parâmentro que é uma string e ela interpreta  essa string como sendo uma instrução javascript, é como se nós pegassemos nossa string e submetesse ao interpretador do js forncendo para nós um resultado semelhante que fizemos no console.log  compiamos a string que jogamos no console.log que entendeu que que essa string é na verdade uma operação aritimetrica e trouxe para nós o resultado o evol fuciona de forma semelhante. tecnica bacana para execução js oriundas de string externas.
 
          var valor_campo =  eval(document.getElementById('resultado').value)
          document.getElementById('resultado').value = valor_campo
@@ -117,13 +116,7 @@
 
         }
         else if(tipo === 'valor'){
-          //como nós vamos atuar o valor contigo dentro do campo de soma e resultado vamos acessar  o atributo .value  e vamos associar ao atributo  .value = valor , recebido do parâmetro
-          //var valor_campo = document.getElementById('resultado').value 
-          
-          //nesse caso estamos contatenado o valor_campo + valor o valor_campo é uma string, e o valor é númerico, então o sinal de + ele vai atuar como uma, contatenação se fosse dois valores númericos  o sinal de + faria uma soma.
-          //document.getElementById('resultado').value = valor_campo + valor
-
-          //outro metodo é se usamor o operador += , ele pega o valor ja contido no campo  e no processo de atribuição ele faz antes a contatenação do valor ja contido no campo com valor que é recebido por parâmetro 
+            
           document.getElementById('resultado').value += valor
 
 
