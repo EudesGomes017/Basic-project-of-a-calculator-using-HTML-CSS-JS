@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<title>Calculadora</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <style>
+      .calculadora {
+        margin-top: 40px;
+        border: solid 1px #000;
+        padding: 20px;
+        background-color: #2E2E2E;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px #000;
+      }
+
+      .btn {
+        width: 60px;
+        height: 50px;
+        margin: 5px;
+        box-shadow: 1px 1px 1px #000;
+      }
+
+      .clear {
+        width: 130px;
+      }
+
+      .enter {
+        height: 110px;
+      }
+
+      .zero {
+        width: 130px;
+      }
+
+      .resultado {
+        text-align: right;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: solid 1px #000;
+        box-shadow: 1px 1px 1px #000;
+      }
+
+    </style>
+	</head>
+
+  <body style="background: #D9D9D9">
+
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <br />
+
+          <div class="calculadora">
+            <input id="resultado" type="text" class="form-control resultado" placeholder="0" disabled="disabled" />
+            
+            <div class="row">
+              <button onclick="calcular('acao', 'c')"  type="button" class="btn btn-dark btn-lg clear font-weight-light">C</button>
+              <button  onclick="calcular('acao', '/')" type="button" class="btn btn-dark btn-lg font-weight-light">/</button>
+              <button onclick="calcular('acao', '*')" type="button" class="btn btn-dark btn-lg font-weight-light">x</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('valor', 7)" type="button" class="btn btn-dark btn-lg font-weight-light">7</button>
+              <button onclick="calcular('valor', 8)" type="button" class="btn btn-dark btn-lg font-weight-light">8</button>
+              <button onclick="calcular('valor', '9')" type="button" class="btn btn-dark btn-lg font-weight-light">9</button>
+              <button onclick="calcular('acao', '-')" type="button" class="btn btn-dark btn-lg font-weight-light">-</button>
+            </div>
+            
+            <div class="row">
+              <button onclick="calcular('valor', 4)" type="button" class="btn btn-dark btn-lg font-weight-light">4</button>
+              <button onclick="calcular('valor', 5)" type="button" class="btn btn-dark btn-lg font-weight-light">5</button>
+              <button onclick="calcular('valor', 6)" type="button" class="btn btn-dark btn-lg font-weight-light">6</button>
+              <button onclick="calcular('acao', '+')" type="button" class="btn btn-dark btn-lg font-weight-light">+</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('valor', 1)" type="button" class="btn btn-dark btn-lg font-weight-light">1</button>
+              <button onclick="calcular('valor', 2)" type="button" class="btn btn-dark btn-lg font-weight-light">2</button>
+              <button onclick="calcular('valor', 3)" type="button" class="btn btn-dark btn-lg font-weight-light">3</button>
+              <button onclick="calcular('acao', '=')" type="button" class="btn btn-dark btn-lg enter">=</button>
+            </div>
+
+            <div class="row" style="margin-top: -60px">
+              <button onclick="calcular('valor', 0)" type="button" class="btn btn-dark zero btn-lg font-weight-light">0</button>
+              <button onclick="calcular('acao', '.')" type="button" class="btn btn-dark btn-lg font-weight-light">.</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <script>
+      function calcular(tipo, valor){
+        // Identico (===), verifica se os valores comparados são  iguais e do mesmo tipo.
+        if(tipo === 'acao'){
+        
+        if(valor === 'c'){
+          //limpar visor do resultado, atuar com atributo .value e deixa o campo vazio para poder limpar o visor.
+          document.getElementById('resultado').value = ''
+
+        }
+        // operador logico (|| ou)
+        if( valor === '+' || valor === '-' || valor === '*' || valor === '/' || valor === '.'){
+          document.getElementById('resultado').value += valor 
+        }
+        if(valor === '='){
+          //existe um recurso no js que é a eval ela faz exatamente oq  nós fizemos aqui  nós submentamos no parâmentro que é uma string e ela interpreta  essa string como sendo uma instrução javascript, é como se nós pegassemos nossa string e submetesse ao interpretador do js forncendo para nós um resultado semelhante que fizemos no console.log  compiamos a string que jogamos no console.log que entendeu que que essa string é na verdade uma operação aritimetrica e trouxe para nós o resultado o evol fuciona de forma semelhante. tecnica bacana para execução js oriundas de string externas.
+
+         var valor_campo =  eval(document.getElementById('resultado').value)
+         document.getElementById('resultado').value = valor_campo
+         
+        }
+
+        }
+        else if(tipo === 'valor'){
+          //como nós vamos atuar o valor contigo dentro do campo de soma e resultado vamos acessar  o atributo .value  e vamos associar ao atributo  .value = valor , recebido do parâmetro
+          //var valor_campo = document.getElementById('resultado').value 
+          
+          //nesse caso estamos contatenado o valor_campo + valor o valor_campo é uma string, e o valor é númerico, então o sinal de + ele vai atuar como uma, contatenação se fosse dois valores númericos  o sinal de + faria uma soma.
+          //document.getElementById('resultado').value = valor_campo + valor
+
+          //outro metodo é se usamor o operador += , ele pega o valor ja contido no campo  e no processo de atribuição ele faz antes a contatenação do valor ja contido no campo com valor que é recebido por parâmetro 
+          document.getElementById('resultado').value += valor
+
+
+        }
+
+      }
+    </script> 
+
+  </body>	
+
+</html>
