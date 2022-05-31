@@ -95,15 +95,15 @@
 
     <script>
       function calcular(tipo, valor){
-        // Identico (===), verifica se os valores comparados são  iguais e do mesmo tipo.
+        
         if(tipo === 'acao'){
         
         if(valor === 'c'){
-          //limpar visor do resultado, atuar com atributo .value e deixa o campo vazio para poder limpar o visor.
+          
           document.getElementById('resultado').value = ''
 
         }
-        // operador logico (|| ou)
+     
         if( valor === '+' || valor === '-' || valor === '*' || valor === '/' || valor === '.'){
           document.getElementById('resultado').value += valor 
         }
